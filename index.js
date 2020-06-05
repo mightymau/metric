@@ -54,6 +54,6 @@ app.post('/metric/:id', (req, res) => {
 });
 
 //PORT
-const port = process.env.PORT || 3213;
+const port = process.env.PORT;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
 
