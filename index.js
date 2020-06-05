@@ -31,7 +31,7 @@ app.post('/metric/:id', (req, res) => {
     }
     //console.log(req)
     const newMetric = {
-        value: req.body.value,
+        value: Math.round(req.body.value),
         date: new Date,
     }
 
@@ -39,7 +39,6 @@ app.post('/metric/:id', (req, res) => {
 
     //Check if metric exist
     if(req.params.id in metrics) {
-        console.log("Exist!")
         metrics[req.params.id].push(newMetric);
         console.log(metrics);
         res.status(200).send({});
@@ -47,7 +46,6 @@ app.post('/metric/:id', (req, res) => {
     } else {
         //if it doesnt exist create new object
         metrics[req.params.id] = [newMetric];
-        console.log("Does not exist@");
         console.log(metrics);
         res.status(200).send({});
     }
